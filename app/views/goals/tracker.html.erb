@@ -1,0 +1,10 @@
+<h1>Goals Tracker</h1>
+<ul><% @goals.select{|goal| goal.status == "Incomplete"}.each do |goal| %>
+  <li><%= link_to("#{goal.title} : Incomplete", goal) %></li>
+  <% end %>
+</ul>
+<hr>
+<ul><% @goals.select{|goal| goal.status == "Complete"}.each do |goal| %>
+  <li><%= link_to("#{goal.title} : Complete", goal) %></li>
+  <% end %>
+</ul>
