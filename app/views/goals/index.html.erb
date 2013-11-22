@@ -1,4 +1,8 @@
 <ul><% @goals.each do |goal|%>
-  <li><%= link_to goal.title, goal %></li>
+  <li> <%= button_to("Cheer This User On!", goal_cheer_url(goal), method: :post) unless goal.cheersers.include? current_user %>
+    <%= goal.cheers.count %>
+    <%= link_to goal.title, goal %>
+  </li>
+
   <% end %>
 </ul>

@@ -33,4 +33,15 @@ class GoalsController < ApplicationController
   def show
     @goal = Goal.find_by_id(params[:id])
   end
+
+  def cheer
+    @goal = Goal.find(params[:goal_id])
+    cheer = Cheer.new(goal_id: @goal.id, user_id: current_user.id)
+    if cheer.save
+      redirect_to goals_url
+    else
+      flash[:errors] = cheer.errors.full_messages
+      redirect_to goals_url
+    end
+  end
 end

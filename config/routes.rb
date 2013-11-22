@@ -2,8 +2,11 @@ GoalsApp2::Application.routes.draw do
 
   resources :users
   resource :session
-  resources :goals
+  resources :goals do
+    post '/cheer', to: 'goals#cheer'
+  end
   get '/tracker', to: 'goals#tracker'
+
   root to: 'users#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
