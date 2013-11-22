@@ -1,8 +1,30 @@
-<ul><% @goals.each do |goal|%>
-  <li> <%= button_to("Cheer This User On!", goal_cheer_url(goal), method: :post) unless goal.cheersers.include? current_user %>
-    <%= goal.cheers.count %>
-    <%= link_to goal.title, goal %>
-  </li>
-
+  <table border=1>
+    <tr>
+      <th>
+        Give Cheers
+      </th>
+      <th>
+        Cheers Gotten
+      </th>
+      <th>
+        Goal Title
+      </th>
+    </tr>
+    <ul><% @goals.each do |goal|%>
+    <tr>
+      <td align="center"><%=
+        if goal.cheersers.include? current_user;
+          "You already Cheers-ed";
+        else;
+          button_to("Cheer This User On!", goal_cheer_url(goal), method: :post);
+        end
+         %></td>
+      <td align="center">
+        <%= goal.cheers.count %>
+      </td>
+      <td align="center">
+        <%= link_to goal.title, goal %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </table>

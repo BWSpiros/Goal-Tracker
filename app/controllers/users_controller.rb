@@ -18,5 +18,9 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+    @goals = Goal.find_all_by_user_id(params[:id])
+  end
 
 end
