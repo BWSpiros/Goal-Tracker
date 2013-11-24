@@ -1,1 +1,6 @@
-<%= @goal.description %>
+
+<% @goal.attributes.each do |k, v| %>
+<p>
+<%= "#{k}: #{v}" %>
+</p>
+<% end %>

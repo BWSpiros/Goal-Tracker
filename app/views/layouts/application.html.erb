@@ -7,6 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<table border=1>
+		<tr>
+			<th>
+				<%= link_to "Goals", goals_url %>
+			</th>
+			<th>
+				<%= link_to "Leaderboard", users_url %>
+			</th>
+			<th>
+				<%= link_to "Make a New Goal", new_goal_url %>
+			</th>
+		</tr>
+	</table>
+
   <%= button_to("Log Out", session_url, method: :delete) if !!current_user %>
 
 <%= yield %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_filter :user_logged_in?, except: [:new, :create]
   def new
   end
 
@@ -21,6 +21,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @goals = Goal.find_all_by_user_id(params[:id])
+  end
+
+  def user_logged_in?
+    unless !!current_user
+      redirect_to new_session_url
+    end
   end
 
 end
